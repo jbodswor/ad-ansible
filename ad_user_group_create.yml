@@ -1,0 +1,8 @@
+---
+# Playbook to install and configure windows services
+
+- name: Add users to AD
+  hosts: windows
+  roles:
+    - role: win_domain_user
+
