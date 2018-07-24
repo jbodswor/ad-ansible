@@ -1,0 +1,8 @@
+---
+# Playbook to install and configure windows services
+
+- name: Install and configure windows services
+  hosts: windows
+  roles:
+    - role: win_service_config
+
