@@ -1,0 +1,10 @@
+---
+# Playbook to install and configure Active Directory
+
+- name: Install Windows Active Directory
+  hosts: windows
+  # gather_facts: true
+  # become: true
+  roles:
+    - role: win_ad_install
+

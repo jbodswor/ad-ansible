@@ -1,0 +1,5 @@
+---
+ad_domain_name: ad1.${guid}.example.opentlc.com
+ansible_password: Redh@t123
+ad_admin_user: Administrator
+ad_admin_password: "{{ ansible_password }}"

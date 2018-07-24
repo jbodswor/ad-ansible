@@ -1,0 +1,28 @@
+---
+# tasks file for win_ad_install
+
+- name: Install Windows AD
+  win_feature:
+    name: AD-Domain-Services
+    state: present
+
+- name: Setup AD controller
+  win_domain:
+    dns_domain_name: "{{ ad_domain_name }}"
+    safe_mode_password: "{{ ansible_password }}"
+  register:
+    update_result
+
+- name: Reboot AD node
+  win_reboot:
+  when: update_result.reboot_required
+
+- name: Print out available domain list
+  win_shell: nltest /dclist:"{{ ad_domain_name }}"
+  register:
+    domain_list
+
+- name: Output of domain_list
+  debug:
+    var: domain_list
+
